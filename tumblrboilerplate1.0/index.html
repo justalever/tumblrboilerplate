@@ -1,0 +1,255 @@
+<html lang="{block:English}en{/block:English}{block:French}fr{/block:French}{block:German}de{/block:German}{block:Japanese}ja{/block:Japanese}{block:Italian}it{/block:Italian}{block:Spanish}es{/block:Spanish}{block:Polish}pl{/block:Polish}">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width">
+    <meta name="text:Google Analytics ID" content="" />
+    <meta name="text:Google Web Font name" content="" />
+    <title>{Title}{block:PostSummary} &mdash; {PostSummary}{/block:PostSummary} {block:SearchPage}{lang:Search results for SearchQuery} - {/block:SearchPage}</title>
+    <link rel="apple-touch-icon" href="{PortraitURL-128}">
+    <link rel="shortcut icon" href="{Favicon}">
+    <link rel="alternate" type="application/rss+xml" href="{RSS}">
+    <link rel="shortcut icon" href="{Favicon}">
+    <link rel="alternate" type="application/rss+xml" href="{RSS}">{block:Description}
+    <meta name="description" content="{MetaDescription}" />{/block:Description}
+
+    <!--Custom google webfonts -->
+    <link href='http://fonts.googleapis.com/css?family={text:Google Web Font name}' rel='stylesheet' type='text/css'>
+    <!--
+    	<link rel="stylesheet" href="your-external-stylesheet-here-if-you-wish" type="text/css" media="all">
+    	Upload at http://www.tumblr.com/themes/upload_static_file
+    -->
+
+    <style type="text/css">
+    /* Editable reset */
+    /* http://meyerweb.com/eric/tools/css/reset/  | v2.0 | 20110126 | License: none (public domain) */
+    html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, 
+    address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, 
+    b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, 
+    tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, 
+    output, ruby, section, summary, time, mark, audio, video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+    }
+    /* HTML5 display-role reset for older browsers */
+    article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+        display: block;
+    }
+    body {
+        line-height: 1;
+        font-family:'{text:Google Web Font name}';
+        font-size: 1.5em;
+    }
+    ol, ul {
+        list-style: none;
+    }
+    blockquote, q {
+        quotes: none;
+    }
+    blockquote:before, blockquote:after, q:before, q:after {
+        content:'';
+        content: none;
+    }
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+    /* Basic image/video/media handling */
+    img, video, object, embed {
+        max-width: 100%;
+        height: auto !important;
+    }
+   
+    {CustomCSS}
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>{Title}</h1>
+        {block:Description}
+        <p id="description">{Description}</p>{/block:Description}
+        <nav>
+            <ul>
+                {block:HasPages} 
+                {block:Pages}
+                	<li><a href="{URL}">{Label}</a></li>
+                {/block:Pages} 
+                {/block:HasPages}
+            </ul>
+        </nav>
+        <form action="/search" method="get">
+            <input type="text" name="q" value="{SearchQuery}" />
+            <input type="submit" value="{lang:Search}" />
+        </form>
+    </header>
+
+    <article class="posts {TagsAsClasses}">
+        {block:Posts} 
+        	
+        	{block:Text}
+        		<div class="post text">
+            	{block:Title}
+            	<h3><a href="{Permalink}">{Title}</a></h3>
+            	{/block:Title}{Body}
+        		</div>
+        	{/block:Text} 
+        	
+        	{block:Photo}
+        		<div class="post photo">
+            	<img src="{PhotoURL-500}" alt="{PhotoAlt}" />
+            	{block:Caption}
+            		<div class="caption">{Caption}</div>
+            	{/block:Caption}
+        		</div>
+        	{/block:Photo}
+
+        	{block:Panorama}
+        		<div class="post panorama">
+            	{LinkOpenTag}
+            	<img src="{PhotoURL-Panorama}" alt="{PhotoAlt}" />{LinkCloseTag}
+            	{block:Caption}
+            		<div class="caption">{Caption}</div>
+            	{/block:Caption}
+        		</div>
+        	{/block:Panorama} 
+
+        	{block:Photoset}
+        		<div class="post photoset">
+            	{Photoset-500}
+            	{block:Caption}
+            		<div class="caption">{Caption}</div>
+            	{/block:Caption}
+        		</div>
+        	{/block:Photoset} 
+
+        	{block:Quote}
+        		<div class="post quote">
+            	"{Quote}" 
+            	{block:Source}
+            		<div class="source">{Source}</div>
+            	{/block:Source}
+        		</div>
+        	{/block:Quote}
+
+        	{block:Link}
+        		<div class="post link">
+            	<a href="{URL}" class="link" {Target}>{Name}</a>
+            	{block:Description}
+            		<div class="description">{Description}</div>
+            	{/block:Description}
+        		</div>
+        	{/block:Link}
+
+        	{block:Chat}
+        		<div class="post chat">
+            	{block:Title}
+            	<h3><a href="{Permalink}">{Title}</a></h3>
+            	{/block:Title}
+            		<ul class="chat">
+                	{block:Lines}
+               			<li class="{Alt} user_{UserNumber}">
+                    	{block:Label}
+                    		<span class="label">{Label}</span>
+                    	{/block:Label}
+                   		{Line}
+                		</li>
+                	{/block:Lines}
+            		</ul>
+        		</div>
+        	{/block:Chat}
+
+        	{block:Video}
+        		<div class="post video">
+            	{Video-500}
+            	{block:Caption}
+            		<div class="caption">{Caption}</div>
+            	{/block:Caption}
+        		</div>
+        	{/block:Video}
+
+        	{block:Audio}
+        		<div class="post audio">
+            	{AudioEmbed}
+            	{block:Caption}
+            		<div class="caption">{Caption}</div>
+            	{/block:Caption}
+        		</div>
+        {/block:Audio} 
+
+        {block:Answer}
+        <div class="answer">
+            <img src="{AskerPortraitURL-40}">{Asker} {Question} {Answer}
+        </div>
+        {/block:Answer}
+
+        {block:PermalinkPage} 
+        	{block:HasTags}
+        		<ul class="tags">
+            	{block:Tags}
+            		<li><a href="{TagURL}">{Tag}</a></li>
+          		{/block:Tags}
+          	</ul>
+        	{/block:HasTags}
+
+        	<ul class="like_and_reblog_buttons">
+            <li>{ReblogButton}</li>
+            <li>{LikeButton}</li>
+       		</ul>
+
+        	<div class="comments">
+            <!--embed comment widget here if required top appear on permalink page-->
+            Comments area
+        	</div>
+        	{block:PostNotes}
+        		<div class="notes">
+            	{PostNotes}
+        		</div>
+        	{/block:PostNotes}
+        {/block:PermalinkPage} 
+
+        {block:TagPage}
+        	<h2>Posts tagged "{Tag}"</h2>
+        {/block:TagPage} 
+
+    	{/block:Posts}
+    </article><!--end of article-->
+
+    <footer class="footer">
+      <nav>
+        <ul>
+        	{block:PreviousPage}
+         	 <li><a href="{PreviousPage}">&#171; Previous</a></li>
+        	{/block:PreviousPage}
+
+        	{block:NextPage}
+            <li><a href="{NextPage}">Next &#187;</a></li>
+        	{/block:NextPage}
+
+        	<li><a href="/archive">Archive</a></li>
+        </ul>
+      </nav>
+    </footer>
+
+    {block:IfGoogleAnalyticsID}
+    <script>
+    var _gaq = [
+        ['_setAccount', '{text:Google Analytics ID}'],
+        ['_trackPageview']
+    ];
+    (function(d, t) {
+        var g = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g, s)
+    }(document, 'script'));
+    </script>
+    {/block:IfGoogleAnalyticsID}
+</body>
+</html>
