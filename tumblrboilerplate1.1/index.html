@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="{block:English}en{/block:English}{block:French}fr{/block:French}{block:German}de{/block:German}{block:Japanese}ja{/block:Japanese}{block:Italian}it{/block:Italian}{block:Spanish}es{/block:Spanish}{block:Polish}pl{/block:Polish}">
 
 <head>
@@ -64,14 +65,19 @@
         max-width: 100%;
         height: auto !important;
     }
-   
-    {CustomCSS}
+    
     </style>
+    
+    <!-- Custom css added from tumblr theme dashboard -->
+    <style type="text/css">
+        {CustomCSS}
+    </style>
+
 </head>
 
 <body>
 
-    <header>
+    <header class="site-header">
         <h1>{Title}</h1>
         {block:Description}
         <p id="description">{Description}</p>{/block:Description}
@@ -90,138 +96,140 @@
         </form>
     </header>
 
-    <article class="posts {TagsAsClasses}">
-        {block:Posts} 
-        	
-        	{block:Text}
-        		<div class="post text">
-            	{block:Title}
-            	<h3><a href="{Permalink}">{Title}</a></h3>
-            	{/block:Title}{Body}
-        		</div>
-        	{/block:Text} 
-        	
-        	{block:Photo}
-        		<div class="post photo">
-            	<img src="{PhotoURL-500}" alt="{PhotoAlt}" />
-            	{block:Caption}
-            		<div class="caption">{Caption}</div>
-            	{/block:Caption}
-        		</div>
-        	{/block:Photo}
+    <main class="site-body">
+        <article class="posts {TagsAsClasses}">
+            {block:Posts}
 
-        	{block:Panorama}
-        		<div class="post panorama">
-            	{LinkOpenTag}
-            	<img src="{PhotoURL-Panorama}" alt="{PhotoAlt}" />{LinkCloseTag}
-            	{block:Caption}
-            		<div class="caption">{Caption}</div>
-            	{/block:Caption}
-        		</div>
-        	{/block:Panorama} 
+              {block:Text}
+                <div class="post text">
+                  {block:Title}
+                  <h3><a href="{Permalink}">{Title}</a></h3>
+                  {/block:Title}{Body}
+                </div>
+              {/block:Text} 
 
-        	{block:Photoset}
-        		<div class="post photoset">
-            	{Photoset-500}
-            	{block:Caption}
-            		<div class="caption">{Caption}</div>
-            	{/block:Caption}
-        		</div>
-        	{/block:Photoset} 
+              {block:Photo}
+                <div class="post photo">
+                  <img src="{PhotoURL-500}" alt="{PhotoAlt}" />
+                  {block:Caption}
+                    <div class="caption">{Caption}</div>
+                  {/block:Caption}
+                </div>
+              {/block:Photo}
 
-        	{block:Quote}
-        		<div class="post quote">
-            	&#8220;{Quote}&#8221;
-            	{block:Source}
-            		<div class="source">{Source}</div>
-            	{/block:Source}
-        		</div>
-        	{/block:Quote}
+              {block:Panorama}
+                <div class="post panorama">
+                  {LinkOpenTag}
+                  <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}" />{LinkCloseTag}
+                  {block:Caption}
+                    <div class="caption">{Caption}</div>
+                  {/block:Caption}
+                </div>
+              {/block:Panorama} 
 
-        	{block:Link}
-        		<div class="post link">
-            	<a href="{URL}" class="link" {Target}>{Name}</a>
-            	{block:Description}
-            		<div class="description">{Description}</div>
-            	{/block:Description}
-        		</div>
-        	{/block:Link}
+              {block:Photoset}
+                <div class="post photoset">
+                  {Photoset-500}
+                  {block:Caption}
+                    <div class="caption">{Caption}</div>
+                  {/block:Caption}
+                </div>
+              {/block:Photoset} 
 
-        	{block:Chat}
-        		<div class="post chat">
-            	{block:Title}
-            	<h3><a href="{Permalink}">{Title}</a></h3>
-            	{/block:Title}
-            		<ul class="chat">
-                	{block:Lines}
-               			<li class="{Alt} user_{UserNumber}">
-                    	{block:Label}
-                    		<span class="label">{Label}</span>
-                    	{/block:Label}
-                   		{Line}
-                		</li>
-                	{/block:Lines}
-            		</ul>
-        		</div>
-        	{/block:Chat}
+              {block:Quote}
+                <div class="post quote">
+                  &#8220;{Quote}&#8221;
+                  {block:Source}
+                    <div class="source">{Source}</div>
+                  {/block:Source}
+                </div>
+              {/block:Quote}
 
-        	{block:Video}
-        		<div class="post video">
-            	{Video-500}
-            	{block:Caption}
-            		<div class="caption">{Caption}</div>
-            	{/block:Caption}
-        		</div>
-        	{/block:Video}
+              {block:Link}
+                <div class="post link">
+                  <a href="{URL}" class="link" {Target}>{Name}</a>
+                  {block:Description}
+                    <div class="description">{Description}</div>
+                  {/block:Description}
+                </div>
+              {/block:Link}
 
-        	{block:Audio}
-        		<div class="post audio">
-            	{AudioEmbed}
-            	{block:Caption}
-            		<div class="caption">{Caption}</div>
-            	{/block:Caption}
-        		</div>
-        {/block:Audio} 
+              {block:Chat}
+                <div class="post chat">
+                  {block:Title}
+                  <h3><a href="{Permalink}">{Title}</a></h3>
+                  {/block:Title}
+                    <ul class="chat">
+                      {block:Lines}
+                        <li class="{Alt} user_{UserNumber}">
+                          {block:Label}
+                            <span class="label">{Label}</span>
+                          {/block:Label}
+                          {Line}
+                        </li>
+                      {/block:Lines}
+                    </ul>
+                </div>
+              {/block:Chat}
 
-        {block:Answer}
-        <div class="answer">
-            <img src="{AskerPortraitURL-40}">{Asker} {Question} {Answer}
-        </div>
-        {/block:Answer}
+              {block:Video}
+                <div class="post video">
+                  {Video-500}
+                  {block:Caption}
+                    <div class="caption">{Caption}</div>
+                  {/block:Caption}
+                </div>
+              {/block:Video}
 
-        {block:PermalinkPage} 
-        	{block:HasTags}
-        		<ul class="tags">
-            	{block:Tags}
-            		<li><a href="{TagURL}">{Tag}</a></li>
-          		{/block:Tags}
-          	</ul>
-        	{/block:HasTags}
+              {block:Audio}
+                <div class="post audio">
+                  {AudioEmbed}
+                  {block:Caption}
+                    <div class="caption">{Caption}</div>
+                  {/block:Caption}
+                </div>
+            {/block:Audio} 
 
-        	<ul class="like_and_reblog_buttons">
-            <li>{ReblogButton}</li>
-            <li>{LikeButton}</li>
-       		</ul>
+            {block:Answer}
+            <div class="answer">
+                <img src="{AskerPortraitURL-40}">{Asker} {Question} {Answer}
+            </div>
+            {/block:Answer}
 
-        	<div class="comments">
-            <!--embed comment widget here if required top appear on permalink page-->
-            Comments area
-        	</div>
-        	{block:PostNotes}
-        		<div class="notes">
-            	{PostNotes}
-        		</div>
-        	{/block:PostNotes}
-        {/block:PermalinkPage} 
+            {block:PermalinkPage} 
+              {block:HasTags}
+                <ul class="tags">
+                  {block:Tags}
+                    <li><a href="{TagURL}">{Tag}</a></li>
+                  {/block:Tags}
+                </ul>
+              {/block:HasTags}
 
-        {block:TagPage}
-        	<h2>Posts tagged "{Tag}"</h2>
-        {/block:TagPage} 
+              <ul class="like_and_reblog_buttons">
+                <li>{ReblogButton}</li>
+                <li>{LikeButton}</li>
+              </ul>
 
-    	{/block:Posts}
-    </article><!--end of article-->
+              <div class="comments">
+                <!--embed comment widget here if required top appear on permalink page-->
+                Comments area
+              </div>
+              {block:PostNotes}
+                <div class="notes">
+                  {PostNotes}
+                </div>
+              {/block:PostNotes}
+            {/block:PermalinkPage} 
 
-    <footer class="footer">
+            {block:TagPage}
+              <h2>Posts tagged "{Tag}"</h2>
+            {/block:TagPage} 
+
+          {/block:Posts}
+        </article><!--end of article-->
+    </main>
+
+    <footer class="site-footer">
       <nav>
         <ul>
         	{block:PreviousPage}
